@@ -6,8 +6,9 @@ import conf from "@/conf";
 import { AppModule } from "@/app.module";
 
 async function bootstrap() {
+  console.log(conf.env);
+
   const app = await NestFactory.create(AppModule);
-  app.enableShutdownHooks();
   await app.listen(conf.port);
 
   if (module.hot) {

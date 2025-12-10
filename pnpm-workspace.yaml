@@ -2,6 +2,7 @@ packages:
   - backend
   - frontend
   - mobile
+  - shared
 
 onlyBuiltDependencies:
-  - '@nestjs/core'
+  - "@nestjs/core"

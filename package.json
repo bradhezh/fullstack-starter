@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "copy-dist": "pnpm dlx rimraf backend/dist && pnpm dlx cpx \"frontend/dist/**/*\" backend/dist",
+    "build": "pnpm --filter backend build && pnpm --filter frontend build && pnpm copy-dist",
+    "dev": "pnpm --filter backend dev",
+    "dev:frontend": "pnpm --filter frontend dev",
+    "start": "pnpm --filter backend start",
+    "lint": "pnpm -r lint"
   },
   "keywords": [],
   "author": "",

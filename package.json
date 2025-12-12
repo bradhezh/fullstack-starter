@@ -9,6 +9,7 @@
     "dev": "pnpm --filter backend dev",
     "dev:frontend": "pnpm --filter frontend dev",
     "start": "pnpm --filter backend start",
+    "test": "pnpm -r test",
     "lint": "pnpm -r lint"
   },
   "keywords": [],

@@ -5,6 +5,7 @@ build
 docs
 *.local
 .env*
+env.sample
 
 logs
 *.log
@@ -38,3 +39,10 @@ temp
 *.sublime-workspace
 *.sw?
 .DS_Store
+
+.git
+.github
+.gitignore
+CODEOWNERS
+.dockerignore
+Dockerfile

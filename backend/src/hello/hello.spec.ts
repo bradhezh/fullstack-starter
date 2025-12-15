@@ -22,6 +22,10 @@ describe("HelloModule", () => {
     return api.get("/api").expect(200).expect("Hello NestJS!");
   });
 
+  it("DB_URL", () => {
+    expect(process.env.DB_URL).toBe("DB_URL_set!");
+  });
+
   afterAll(async () => {
     await app.close();
   });

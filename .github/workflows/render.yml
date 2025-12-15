@@ -16,8 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Build Image with Testing
-        run: |
-          docker build --build-arg DB_URL_TEST=${{ secrets.DB_URL }} -t my-app:test-tag .
+        run: docker build --build-arg DB_URL_TEST=${{ secrets.DB_URL }} -t my-app:test-tag .
       - name: Login to Docker
         uses: docker/login-action@v3
         with:

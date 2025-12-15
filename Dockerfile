@@ -16,7 +16,6 @@ FROM node:22.21.1
 WORKDIR /usr/app
 COPY --from=build-stage /usr/app/backend/node_modules .
 COPY --from=build-stage /usr/app/backend/build .
-COPY --from=build-stage /usr/app/backend/dist .
 
 USER node
 ENV NODE_ENV=production

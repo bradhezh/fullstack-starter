@@ -3,6 +3,7 @@ import { INestApplication } from "@nestjs/common";
 import supertest from "supertest";
 import TestAgent from "supertest/lib/agent";
 
+import conf from "@/conf";
 import { HelloModule } from "./module";
 
 describe("HelloModule", () => {
@@ -23,7 +24,7 @@ describe("HelloModule", () => {
   });
 
   it("DB_URL", () => {
-    expect(process.env.DB_URL).toBe("DB_URL_set!");
+    expect(conf.dbUrl).toBe("DB_URL_set!");
   });
 
   afterAll(async () => {

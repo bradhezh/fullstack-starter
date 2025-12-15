@@ -1,4 +1,4 @@
-name: Render Pipeline
+name: Render
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   full:
-    name: Pipeline with Docker and Render
+    name: Docker on Render
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

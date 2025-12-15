@@ -9,7 +9,7 @@ RUN pnpm i --frozen-lockfile
 RUN pnpm build
 RUN pnpm lint
 RUN DB_URL=$DB_URL_TEST pnpm test
-RUN pnpm i --frozen-lockfile --prod
+RUN CI=true pnpm i --frozen-lockfile --prod
 
 FROM node:22.21.1
 

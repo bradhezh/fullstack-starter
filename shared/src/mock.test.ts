@@ -21,7 +21,10 @@ describe("mock test", () => {
       },
     };
     const mock = jest.spyOn(obj, "method").mockReturnValue(false);
-    mock();
+    const result = obj.method();
+    expect(result).toBe(false);
+    expect(mock).toHaveBeenCalled();
+    expect(mock).toHaveBeenCalledTimes(1);
     expect(mock.mock.calls).toHaveLength(1);
     expect(mock.mock.results[0].value).toBe(false);
   });

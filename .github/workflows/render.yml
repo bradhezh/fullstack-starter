@@ -2,11 +2,9 @@ name: Render
 
 on:
   push:
-    branches:
-      - master
+    branches: [master]
   pull_request:
     branches: [master]
-    types: [opened, synchronize]
 
 jobs:
   full:

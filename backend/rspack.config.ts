@@ -1,5 +1,5 @@
 import { defineConfig } from "@rspack/cli";
-import { rspack } from "@rspack/core";
+import { rspack, ExternalItem } from "@rspack/core";
 import nodeExternals from "webpack-node-externals";
 import { TsCheckerRspackPlugin } from "ts-checker-rspack-plugin";
 import { RunScriptWebpackPlugin } from "run-script-webpack-plugin";
@@ -8,16 +8,13 @@ import path from "path";
 const dev = process.env.NODE_ENV === "development";
 
 export default defineConfig({
-  target: ["node22.21", "es2023"],
+  target: ["node22", "es2023"],
   mode: !dev ? "production" : "development",
 
   entry: !dev
     ? "./src/main.ts"
     : ["@rspack/core/hot/poll?100", "./src/main.ts"],
-  output: {
-    path: path.resolve(__dirname, "build"),
-    clean: true,
-  },
+  output: { path: path.resolve(__dirname, "build"), clean: true },
 
   resolve: {
     extensions: [".ts", "..."],
@@ -27,7 +24,7 @@ export default defineConfig({
   externals: [
     nodeExternals({
       allowlist: ["reflect-metadata", /@rspack\/core\/hot\/.*/],
-    }) as any,
+    }) as ExternalItem,
   ],
   externalsType: "commonjs",
 
@@ -40,14 +37,8 @@ export default defineConfig({
           options: {
             jsc: {
               target: "es2023",
-              parser: {
-                syntax: "typescript",
-                decorators: true,
-              },
-              transform: {
-                legacyDecorator: true,
-                decoratorMetadata: true,
-              },
+              parser: { syntax: "typescript", decorators: true },
+              transform: { legacyDecorator: true, decoratorMetadata: true },
             },
           },
         },
@@ -59,14 +50,8 @@ export default defineConfig({
     minimizer: [
       new rspack.SwcJsMinimizerRspackPlugin({
         minimizerOptions: {
-          compress: {
-            keep_classnames: true,
-            keep_fnames: true,
-          },
-          mangle: {
-            keep_classnames: true,
-            keep_fnames: true,
-          },
+          compress: { keep_classnames: true, keep_fnames: true },
+          mangle: { keep_classnames: true, keep_fnames: true },
         },
       }),
     ],
@@ -76,10 +61,6 @@ export default defineConfig({
 
   plugins: [
     new TsCheckerRspackPlugin(),
-    dev &&
-      new RunScriptWebpackPlugin({
-        name: "main.js",
-        autoRestart: false,
-      }),
+    dev && new RunScriptWebpackPlugin({ name: "main.js", autoRestart: false }),
   ].filter(Boolean),
 });

@@ -1,22 +1,13 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "build": "rspack build",
     "dev": "rspack dev",
     "start": "node build/main.js",
     "test": "jest --passWithNoTests",
     "lint": "eslint ."
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.21.0",
-  "volta": {
-    "node": "22.21.1",
-    "pnpm": "10.21.0"
   },
   "dependencies": {
     "@nestjs/common": "^11.1.9",
@@ -46,5 +37,10 @@
     "ts-checker-rspack-plugin": "^1.2.1",
     "typescript-eslint": "^8.49.0",
     "webpack-node-externals": "^3.0.0"
-  }
+  },
+  "volta": {
+    "node": "22.21.1",
+    "pnpm": "10.21.0"
+  },
+  "packageManager": "pnpm@10.21.0"
 }
